@@ -1,0 +1,18 @@
+*.state
+*.csv
+*.backup
+webrag/
+webrag/*
+bin/
+bin/*
+lib/
+lib/*
+lib64/
+lib64/*
+
+# symlinks
+lib64
+lib64/
+**/lib64
+**/lib64/
+
