@@ -1,0 +1,19 @@
+[Unit]
+Description=Jeff's Apple Homekit Server
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/jschmidt/src/homekit
+ExecStart=/home/jschmidt/src/homekit/bin/python3 jsserver.py
+# ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+# StandardOutput=null
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

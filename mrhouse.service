@@ -1,0 +1,19 @@
+[Unit]
+Description=Misterhouse Service
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Environment="MRHOUSEBASE=/opt/mrhouse"
+WorkingDirectory=/opt/mrhouse
+ExecStart=/opt/mrhouse/start.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

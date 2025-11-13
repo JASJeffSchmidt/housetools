@@ -1,0 +1,16 @@
+[Unit]
+Description=Baseboard Heater Service
+After=syslog.target network-online.target mrhouse.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/jschmidt/src
+ExecStart=/home/jschmidt/src/thermostat2.py 69.5
+# ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
